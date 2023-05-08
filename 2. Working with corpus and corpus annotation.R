@@ -58,14 +58,8 @@ barplot(top_words$frequency, names.arg = top_words$feature,
         xlab = "Word", ylab = "Frequency", 
         main = "Top 10 Most Frequent Words")
 
-#7. Calculate and visualise Lexical Diversity
+#7. Calculate Lexical Diversity
 library(quanteda)
-# calculate lexical density
-lexdensity <- sum(Judgmentsdfm > 0) / ndoc(Judgmentsdfm)
-
-# display results
-cat(paste0("Lexical Density: ", round(lexdensity * 100, 2), "%"))
-
 # calculate lexical density
 unique_words <- sum(Judgmentsdfm > 0)
 total_words <- sum(Judgmentsdfm)
