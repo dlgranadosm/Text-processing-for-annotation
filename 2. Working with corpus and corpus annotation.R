@@ -11,15 +11,22 @@ Judgments<-readtext("C:\\Users\\Daniel\\Desktop\\Texts Workshop CILC23")
 Judgmentscorpus<-corpus(Judgments)
 
 #2. Tokenize text removing numbers and punctuation
-Judgmentstokens <- tokens(Judgmentscorpus, what = "word", remove_numbers = TRUE, remove_punct = TRUE)
+Judgmentstokens <- tokens(Judgmentscorpus, 
+                          what = "word", 
+                          remove_numbers = TRUE, 
+                          remove_punct = TRUE)
 
 #3. Remove stop words
 library(stringr)
-Judgmentstokens_cleaned <- tokens_remove(Judgmentstokens, stopwords("english"))
+Judgmentstokens_cleaned <- tokens_remove(Judgmentstokens, 
+                                         stopwords("english"))
 
-#Alternative way to remover punctuation
+#Alternative way to remove punctuation
 punctuation <- c(",", ".", "!", "?", ";", ":", "-", "'", "\"", "(", ")", "[", "]", "{", "}")
-Judgmentstokens_cleaned <- tokens_remove(Judgmentstokens_cleaned, pattern = paste0("\\", punctuation, collapse = "|"))
+Judgmentstokens_cleaned <- tokens_remove(Judgmentstokens_cleaned, 
+                                         pattern = paste0("\\", 
+                                                          punctuation, 
+                                                          collapse = "|"))
 
 
 #4. Convert tokens to a document-feature matrix (DFM)

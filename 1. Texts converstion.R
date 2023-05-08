@@ -6,7 +6,7 @@ library(stringr)
 #A. Working with one single document
 
 #1.a. Provide R with the URL or path to your document
-pdf_path <- "C:\\Users\\Daniel\\Desktop\\Texts Workshop CILC23"
+pdf_path <- "C:\\Users\\Daniel\\Desktop\\Texts Workshop CILC23\\58.pdf"
 
 #2.a. Extract the text using R
 txt_output <- pdftools::pdf_text(pdf_path) %>%
@@ -19,11 +19,11 @@ txt_output <- pdftools::pdf_text(pdf_path) %>%
   stringr::str_squish() %>%
   stringr::str_replace_all("- ", "") 
 
-#3.a. Inspect the texts
+#3.a. Inspect the text
 str(txt_output)
 
 #4.a. save one single text to a .txt file
-write(txt_output, file="ACT001.txt")
+write(txt_output, file="58.txt")
 
 
 #B. Working with multiple documents
@@ -58,4 +58,7 @@ names(txts) <- paste("textworkshopcilc23-", 1:length(txts), sep = "")
 
 #5.b. Save result to disc
 lapply(seq_along(txts), function(i)writeLines(text = unlist(txts[i]),
-                                              con = paste("C:\\Users\\Daniel\\Desktop\\Texts Workshop CILC23", names(txts)[i],".txt", sep = "")))
+                                              con = paste("C:\\Users\\Daniel\\Desktop\\Texts Workshop CILC23", 
+                                                          names(txts)[i],
+                                                          ".txt", 
+                                                          sep = "")))
